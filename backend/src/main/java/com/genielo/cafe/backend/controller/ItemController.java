@@ -1,5 +1,6 @@
 package com.genielo.cafe.backend.controller;
 
+import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,7 +32,7 @@ public class ItemController {
 	private ItemRepository itemRepository;
 	
 	@GetMapping("/items/breakfast")
-	public String getAllBreakfast(Model model){
+	public String getAllBreakfastItems(Model model){
 		
 		try {
 			List<Item> breakfastItems = new ArrayList<Item>();
@@ -45,14 +46,24 @@ public class ItemController {
 	}
 	
 	@GetMapping("/items")
-	  public ResponseEntity<Item> createItem(@RequestBody Item item) {
+	public String getAllItems(Model model) {
 	    try {
-	      Item _item = itemRepository
-	          .save(new Item(item.getName(), item.getCost(), item.getDescription()));
-	      return new ResponseEntity<>(_item, HttpStatus.CREATED);
+	    	
+	    	List<Item> items = new ArrayList<Item>();
+			itemRepository.findAll().forEach(items::add);		
+			model.addAttribute("allItems", items);
+			
 	    } catch (Exception e) {
-	      return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+			model.addAttribute("message", e.getMessage());
+	
 	    }
+	    return "allItems";
+	    
+	//@PostMapping("/commands/{id}/addItem/{id}")
+	//public String makeNewCommand(Model model) {
+		
+	//}
+	 
   }
 	
 	

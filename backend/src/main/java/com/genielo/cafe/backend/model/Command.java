@@ -27,9 +27,23 @@ public class Command {
 	@Column(name = "tablenumber")
 	private int tablenumber;
 	
+	@Column(name = "served")
+	private boolean served = false;
+	
+	@Column(name = "cooked")
+	private boolean cooked = false;
+	
 	@Column(name = "type")
 	private String type;
 	
+	public List<Item> getItems() {
+		return items;
+	}
+
+	public void setItems(List<Item> items) {
+		this.items = items;
+	}
+
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "command_items",
 	joinColumns = @JoinColumn(name="item_id",
@@ -38,6 +52,20 @@ referencedColumnName = "id"),
 	referencedColumnName = "id"))
 	private List<Item> items;
 	
+	
+	public Command() {
+		super();
+	}
+
+	public Command(double amount, int tablenumber, boolean served, boolean cooked, String type) {
+		super();
+		this.amount = amount;
+		this.tablenumber = tablenumber;
+		this.served = served;
+		this.cooked = cooked;
+		this.type = type;
+	}
+
 	public String getType() {
 		return type;
 	}
@@ -46,22 +74,6 @@ referencedColumnName = "id"),
 		this.type = type;
 	}
 
-	@Column(name = "completed")
-	private boolean completed;
-
-	public Command() {
-		super();
-	}
-
-	
-
-	public Command(double amount, int tablenumber, String type, boolean completed) {
-		super();
-		this.amount = amount;
-		this.tablenumber = tablenumber;
-		this.type = type;
-		this.completed = completed;
-	}
 
 	public long getId() {
 		return id;
@@ -87,14 +99,21 @@ referencedColumnName = "id"),
 		this.tablenumber = tablenumber;
 	}
 
-	public boolean isCompleted() {
-		return completed;
+	public boolean isServed() {
+		return served;
 	}
 
-	public void setCompleted(boolean completed) {
-		this.completed = completed;
+	public void setServed(boolean served) {
+		this.served = served;
 	}
 
-	
+	public boolean isCooked() {
+		return cooked;
+	}
+
+	public void setCooked(boolean cooked) {
+		this.cooked = cooked;
+	}
+
 	
 }

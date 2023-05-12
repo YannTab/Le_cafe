@@ -6,4 +6,5 @@ import com.genielo.cafe.backend.model.*;
 
 public interface CommandRepository extends JpaRepository<Command, Long> {
 
+	
 }

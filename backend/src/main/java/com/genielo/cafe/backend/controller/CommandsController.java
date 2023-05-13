@@ -69,7 +69,7 @@ public class CommandsController {
 		return "redirect:/items";
 	}
 	
-	@PostMapping("/commands/confirm/{command_id}")
+	@GetMapping("/commands/confirm/{command_id}")
 	public String confirmCommand(@PathVariable("command_id") Long command_id, Model model, RedirectAttributes redirectAttributes) {
 		
 		try {
@@ -113,6 +113,7 @@ public class CommandsController {
 		
 	}
 	
+	@GetMapping("/commands/serve/{command_id}")
 	public String serveCommand(Model model, RedirectAttributes  redirectAttributes, @PathVariable("command_id") Long command_id) {
 		
 		try {
@@ -126,6 +127,7 @@ public class CommandsController {
 		return "redirect:/commnds/toServe";
 	}
 	
+	@GetMapping("/commands/cook/{command_id}")
 	public String cookCommand(Model model, RedirectAttributes  redirectAttributes, @PathVariable("command_id") Long command_id) {
 		
 		try {

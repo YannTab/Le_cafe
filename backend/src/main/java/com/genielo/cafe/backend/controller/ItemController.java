@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.genielo.cafe.backend.model.*;
 import com.genielo.cafe.backend.repository.*;
@@ -46,5 +47,21 @@ public class ItemController {
 	    return "allItems";
 	}
 	    
+	
+	/*public String addItemIngredients(Model model, @PathVariable("item_id") Long item_id) {
+		
+		try {
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}*/
+	
+	@GetMapping("/items/{item_id}")
+	public String getItem(Model model, @PathVariable("item_id") Long item_id) {
+		Item item = itemRepository.findById(item_id).get();
+		model.addAttribute("item", item);
+		return "chooseItem";
+	}
 		
 }

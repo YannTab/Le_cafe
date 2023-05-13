@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -80,6 +81,62 @@ public class CommandsController {
 		}
 		
 		return "redirect:/";
+	}
+	
+	@GetMapping("/commands/toServe")
+	public String getCommandToServe(Model model) {
+		
+		try {
+			List<Command> commandsToServe = new ArrayList<Command>();
+			commandRepository.findByServed(false).forEach(commandsToServe::add);
+			model.addAttribute("commandsToServe", commandsToServe);
+		} catch (Exception e) {
+			model.addAttribute("message", e.getMessage());
+
+		}
+		return "getCommandsToServe";
+		
+	}
+	
+	@GetMapping("/commands/toServe")
+	public String getCommandToCook(Model model) {
+		
+		try {
+			List<Command> commandsToCook = new ArrayList<Command>();
+			commandRepository.findByCooked(false).forEach(commandsToCook::add);
+			model.addAttribute("commandsToCook", commandsToCook);
+		} catch (Exception e) {
+			model.addAttribute("message", e.getMessage());
+
+		}
+		return "getCommandsToCook";
+		
+	}
+	
+	public String serveCommand(Model model, RedirectAttributes  redirectAttributes, @PathVariable("command_id") Long command_id) {
+		
+		try {
+			Command command = commandRepository.findById(command_id).get();
+			command.setServed(true);
+		} catch (Exception e) {
+		      redirectAttributes.addFlashAttribute("message", e.getMessage());
+
+		}
+		
+		return "redirect:/commnds/toServe";
+	}
+	
+	public String cookCommand(Model model, RedirectAttributes  redirectAttributes, @PathVariable("command_id") Long command_id) {
+		
+		try {
+			Command command = commandRepository.findById(command_id).get();
+			command.setCooked(true);
+		} catch (Exception e) {
+		      redirectAttributes.addFlashAttribute("message", e.getMessage());
+
+		}
+		
+		return "redirect:/commnds/toCook";
 	}
 }
 

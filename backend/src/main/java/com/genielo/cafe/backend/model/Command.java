@@ -33,6 +33,9 @@ public class Command {
 	@Column(name = "cooked")
 	private boolean cooked = false;
 	
+	@Column(name = "confirmed")
+	private boolean confirmed = false;
+	
 	@Column(name = "type")
 	private String type;
 	
@@ -57,12 +60,13 @@ referencedColumnName = "id"),
 		super();
 	}
 
-	public Command(double amount, int tablenumber, boolean served, boolean cooked, String type) {
+	public Command(double amount, int tablenumber, boolean served, boolean cooked, String type, boolean confirmed) {
 		super();
 		this.amount = amount;
 		this.tablenumber = tablenumber;
 		this.served = served;
 		this.cooked = cooked;
+		this.confirmed = confirmed;
 		this.type = type;
 	}
 
@@ -101,6 +105,14 @@ referencedColumnName = "id"),
 
 	public boolean isServed() {
 		return served;
+	}
+
+	public boolean isConfirmed() {
+		return confirmed;
+	}
+
+	public void setConfirmed(boolean confirmed) {
+		this.confirmed = confirmed;
 	}
 
 	public void setServed(boolean served) {

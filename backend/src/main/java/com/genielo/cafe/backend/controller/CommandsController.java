@@ -2,6 +2,7 @@ package com.genielo.cafe.backend.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,14 +18,18 @@ import com.genielo.cafe.backend.model.Item;
 import com.genielo.cafe.backend.repository.CommandRepository;
 import com.genielo.cafe.backend.repository.ItemRepository;
 
+import lombok.RequiredArgsConstructor;
+
 
 @Controller
 public class CommandsController {
 	
 
 	@Autowired
-	ItemRepository itemRepository;
-	CommandRepository commandRepository;
+	private ItemRepository itemRepository;
+	
+	@Autowired
+	private CommandRepository commandRepository;
 	
 	@GetMapping("/commands/new")
 	public String addCommand(Model model, RedirectAttributes redirectAttributes) {
@@ -53,17 +58,16 @@ public class CommandsController {
 		return "CommandItems";
 	}
 	
-	@GetMapping("commands/{command_id}/allItems")
+	@GetMapping("/commands/{command_id}/allItems")
 	public String getAllItems(Model model, RedirectAttributes redirectAttributes, @PathVariable("command_id") Long command_id) {
 	    try {
 	    	
 	    	List<Item> items = new ArrayList<Item>();
 			itemRepository.findAll().forEach(items::add);		
 			model.addAttribute("allItems", items);
-			Command command  = commandRepository.findById(command_id).get();
+			Command command  = commandRepository.findById((long) command_id).get();
 			model.addAttribute("command", command);
 			redirectAttributes.addAttribute(command_id);
-			
 			
 	    } catch (Exception e) {
 			model.addAttribute("message", e.getMessage());

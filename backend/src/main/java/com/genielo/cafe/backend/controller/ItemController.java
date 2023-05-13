@@ -14,6 +14,7 @@ import com.genielo.cafe.backend.model.*;
 import com.genielo.cafe.backend.repository.*;
 
 @Controller
+
 public class ItemController {
 
 	@Autowired

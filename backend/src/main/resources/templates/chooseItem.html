@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-       * {
+      * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -397,57 +397,61 @@ img {
     }
 }
     </style>
-    
     <title>Client View</title>
 </head>
 
 <body>
-            <div class="side-menu">
-                <div class="brand-name">
-                    <h1>Le Cafe</h1>
+    <div class="side-menu">
+        <div class="brand-name">
+            <h1>Le Cafe</h1>
+        </div>
+        <ul>
+            <a href="index.html"><li><img src="dashboard (2).png" alt="">&nbsp; <span>Menu</span> </li></a>
+            <a href="breakfast.html"><li><img src="reading-book (1).png" alt="">&nbsp;<span>breakfast</span> </li></a>
+            <li><img src="teacher2.png" alt="">&nbsp;<span>launch</span> </li>
+            <li><img src="teacher2.png" alt="">&nbsp;<span>Dinner</span> </li>
+        </ul>
+    </div>
+    <div class="container">
+        <div class="header">
+            <div class="nav">
+                <div class="search">
+                    <input type="text" placeholder="Search..">
+                    <button type="submit"><img src="search.png" alt=""></button>
                 </div>
-                <ul>
-                    <a href="index.html"><li><img src="dashboard (2).png" alt="">&nbsp; <span>Menu</span> </li></a>
-                    <li><img src="reading-book (1).png" alt="">&nbsp;<span>breakfast</span> </li>
-                    <a href="launch.html"><li><img src="teacher2.png" alt="">&nbsp;<span>launch</span> </li></a>
-                    <li><img src="teacher2.png" alt="">&nbsp;<span>Dinner</span> </li>
-                </ul>
+                <div class="user">
+                    <a href="command.html" class="btn">Add New</a>
+                    <img src="notifications.png" alt="">
+                    <div class="img-case">
+                        <img src="user.png" alt="">
+                    </div>
+                </div>
             </div>
-            <div class="container">
-                <div class="header">
-                    <div class="nav">
-                        <div class="search">
-                            <input type="text" placeholder="Search..">
-                            <button type="submit"><img src="search.png" alt=""></button>
-                        </div>
-                        <div class="user">
-                            <a href="#" class="btn">Add New</a>
-                            <img src="notifications.png" alt="">
-                            <div class="img-case">
-                                <img src="user.png" alt="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="content">
-                    <div class="cards">
-                        <div class="card" th:each="p:${breakfastItems}" >
-                            <div class="box">
-                                <a><h1 style="text-align: center;" th:text="${p.name}"></h1></a>
-                                
-                                <div class="icon-case" style="margin-left: 200px; margin-top: 10px;">
-                                    <img src="students.png" alt="">
-                                </div>
-                                <span style="margin-left: 180px; font-weight: bold;" th:text="${p.cost}"></span>
-                                <span style="margin: 180px; text-align: center;" th:text="${p.description}"></span>
-                                <a th:href="@{'commands/{command_id} + '/items/' +  ${p.id}}"><button style="background-color: #2e1589; color: rgb(255, 255, 255); height: 30px; width: 90px;border-style: none;margin-top: 10px">Ingredients</button></a>
-                            </div>
-                        </div>
+        </div>
+        <div class="main">
+            <h1 style="text-align:center; margin-bottom:200px;">.....................</h1>
+            <form th:object="${item}" enctype="multipart/form-data" action="item">
+                <fieldset>
+                    <legend style="text-align: center;" th:text="${item.name}"></legend>
                         
-                    </div>
-                </div>
-            </div> 
-    
+                        <br>
+                        <p th:text="${item.cost}"  style="font-weight: 400; margin-top: 50px;"></p><br>
+                           <p th:text="${item.description}"></p>
+
+                    <input type="checkbox" id="html" name="fav_language" value="HTML">
+                    <label for="html">Sardine</label><br>
+                    <input type="checkbox" id="css" name="fav_language" value="CSS">
+                    <label for="css">Soucis</label><br>
+                    <input type="checkbox" id="javascript" name="fav_language" value="JavaScript">
+                    <label for="javascript">Chocolate</label>
+                </fieldset>
+                  <button class="button"  style="background-color: #5461f0; color: aliceblue;
+                    height: 30px; width: 210px; border-style: none; border-radius: 20px; 
+                    margin-left: 160px; margin-top: 30px;"type="submit" value="Submit"><a th:href="@{/commands/{command_id}/items}">Submit</a></button>
+            </form>
+        </div>
+
+    </div>
 </body>
 
 </html>

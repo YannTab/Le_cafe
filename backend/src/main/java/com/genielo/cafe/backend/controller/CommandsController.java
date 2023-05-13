@@ -32,6 +32,7 @@ public class CommandsController {
 		Command command = new Command();
 		command.setCooked(false);
 		command.setServed(false);
+		commandRepository.save(command);
 		
 		model.addAttribute("command", command);
 		return "CommandItems";
@@ -50,6 +51,43 @@ public class CommandsController {
 		}
 		
 		return "CommandItems";
+	}
+	
+	@GetMapping("commands/{command_id}/allItems")
+	public String getAllItems(Model model, RedirectAttributes redirectAttributes, @PathVariable("command_id") Long command_id) {
+	    try {
+	    	
+	    	List<Item> items = new ArrayList<Item>();
+			itemRepository.findAll().forEach(items::add);		
+			model.addAttribute("allItems", items);
+			Command command  = commandRepository.findById(command_id).get();
+			model.addAttribute("command", command);
+			redirectAttributes.addAttribute(command_id);
+			
+			
+	    } catch (Exception e) {
+			model.addAttribute("message", e.getMessage());
+	
+	    }
+	    return "allItems";
+	}
+	
+	@GetMapping("/commands/{command_id}/items/breakfast")
+	public String getAllBreakfastItems(Model model, RedirectAttributes redirectAttributes, @PathVariable("command_id") Long command_id){
+		
+		try {
+			List<Item> breakfastItems = new ArrayList<Item>();
+			itemRepository.findByType("breakfast").forEach(breakfastItems::add);		
+			model.addAttribute("breakfastItems", breakfastItems);
+			Command command  = commandRepository.findById(command_id).get();
+			model.addAttribute("command", command);		
+			redirectAttributes.addAttribute(command_id);
+
+			
+		} catch (Exception e) {
+			model.addAttribute("message", e.getMessage());
+		}
+		return "breakfastItems";
 	}
 	
 	@PostMapping("/commands/{command_id}/addItem/{item_id}") 
@@ -98,7 +136,7 @@ public class CommandsController {
 		
 	}
 	
-	@GetMapping("/commands/toServe")
+	@GetMapping("/commands/toCook")
 	public String getCommandToCook(Model model) {
 		
 		try {
@@ -140,6 +178,12 @@ public class CommandsController {
 		
 		return "redirect:/commnds/toCook";
 	}
+	@GetMapping("commands/{command_id}/items/{item_id}")
+	public String getItem(Model model, @PathVariable("item_id") Long item_id) {
+		Item item = itemRepository.findById(item_id).get();
+		model.addAttribute("item", item);
+		return "chooseItem";
+	}
 }
-
+//th:object="${command}" th:href="@{'/commands/' + ${command.id} + '/items/breakfast'}"
 	

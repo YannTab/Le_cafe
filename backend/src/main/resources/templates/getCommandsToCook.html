@@ -401,32 +401,53 @@ img {
 </head>
 
 <body>
-     <div class="side-menu">
-                <div class="brand-name">
-                    <h1>Le Cafe</h1>
+    <body>
+    <div class="side-menu">
+        <div class="brand-name">
+            <h1>Le Cafe</h1>
+        </div>
+        <ul>
+            <li><img src="dashboard (2).png" alt="">&nbsp; <span>Chef</span> </li>
+           
+        </ul>
+    </div>
+    <div class="container">
+        <div class="header">
+            <div class="nav">
+                <div class="search">
+                    <input type="text" placeholder="Search..">
+                    <button type="submit"><img src="search.png" alt=""></button>
                 </div>
-                <ul>
-                    <a href="index.html"><li><img src="dashboard (2).png" alt="">&nbsp; <span>Client</span> </li></a>
-                    <a th:href="@{/commands/toCook}"><li><img src="reading-book (1).png" alt="">&nbsp;<span>Chef</span> </li></a>
-                    <a th:href="@{/commands/toServe}"><li><img src="teacher2.png" alt="">&nbsp;<span>Server</span> </li></a>
-                </ul>
-            </div>
-            <div class="container">
-                <div class="header">
-                    <div class="nav">
-                        <div class="search">
-                            <input type="text" placeholder="Search..">
-                            <button type="submit"><img src="search.png" alt=""></button>
-                        </div>
-                        <div class="user">
-                            <a th:href="@{/commands/new}" class="btn">Add New</a>
-                            <img src="notifications.png" alt="">
-                            <div class="img-case">
-                                <img src="user.png" alt="">
-                            </div>
-                        </div>
+                <div class="user">
+                    <img src="notifications.png" alt="">
+                    <div class="img-case">
+                        <img src="user.png" alt="">
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="content-2">
+                <div class="recent-payments">
+                    <div class="title">
+                        <h2>Food To be Cooked</h2>
+                    </div>
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Option</th>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+                
+            </div>
+        </div>
+    </div>
 </body>
-
 </html>

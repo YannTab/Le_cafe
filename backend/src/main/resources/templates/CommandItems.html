@@ -428,7 +428,7 @@ img {
         <a th:href="@{'/commands/' +${command.id} + '/allItems'}" ><button  style="background-color: #5461f0; color: aliceblue;
             height: 30px; width: 50px; border-style: none; border-radius: 20px; 
             margin-top: 30px; justify-content:center;">+</button></a>
-            <a  class="btn" style="border-radius: 20px; justify-content: center; height: 30px;  margin-top: 30px;">Submit</a>
+            <a th:href="@{'/commands/confirm/' + ${command.id}}" class="btn" style="border-radius: 20px; justify-content: center; height: 30px;  margin-top: 30px;">Submit</a>
         </div>
      </div>
 </body>

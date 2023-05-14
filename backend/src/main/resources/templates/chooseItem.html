@@ -430,7 +430,7 @@ img {
         </div>
         <div class="main">
             <h1 style="text-align:center; margin-bottom:200px;">.....................</h1>
-            <form th:object="${item}" enctype="multipart/form-data" action="item">
+            <form th:object="${item}" method ="post" enctype="multipart/form-data" action="item">
                 <fieldset>
                     <legend style="text-align: center;" th:text="${item.name}"></legend>
                         
@@ -438,11 +438,11 @@ img {
                         <p th:text="${item.cost}"  style="font-weight: 400; margin-top: 50px;"></p><br>
                            <p th:text="${item.description}"></p>
 
-                    <input type="checkbox" id="html" name="fav_language" value="HTML">
+                    <input type="checkbox" id="" name="" value="">
                     <label for="html">Sardine</label><br>
-                    <input type="checkbox" id="css" name="fav_language" value="CSS">
+                    <input type="checkbox" id="" name="" value="">
                     <label for="css">Soucis</label><br>
-                    <input type="checkbox" id="javascript" name="fav_language" value="JavaScript">
+                    <input type="checkbox" id="" name="" value="">
                     <label for="javascript">Chocolate</label>
                 </fieldset>
                   <button class="button"  style="background-color: #5461f0; color: aliceblue;

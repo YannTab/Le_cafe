@@ -94,7 +94,7 @@ public class CommandsController {
 		return "breakfastItems";
 	}
 	
-	@PostMapping("/commands/{command_id}/addItem/{item_id}") 
+	@GetMapping("/commands/{command_id}/addItem/{item_id}")
 	public String addCommandItem(Model model, @PathVariable("command_id") Long command_id, @PathVariable("item_id") Long item_id, RedirectAttributes redirectAttributes) {
 		try {
 			
@@ -183,9 +183,12 @@ public class CommandsController {
 		return "redirect:/commnds/toCook";
 	}
 	@GetMapping("/commands/{command_id}/items/{item_id}")
-	public String getItem(Model model, @PathVariable("item_id") Long item_id) {
+	public String getItem(Model model, @PathVariable("item_id") Long item_id, @PathVariable("command_id") Long command_id) {
 		Item item = itemRepository.findById(item_id).get();
 		model.addAttribute("item", item);
+		Command command  = commandRepository.findById(command_id).get();
+		model.addAttribute("command", command);
+		
 		return "chooseItem";
 	}
 }

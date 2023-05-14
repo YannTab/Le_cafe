@@ -182,7 +182,7 @@ public class CommandsController {
 		
 		return "redirect:/commnds/toCook";
 	}
-	@GetMapping("commands/{command_id}/items/{item_id}")
+	@GetMapping("/commands/{command_id}/items/{item_id}")
 	public String getItem(Model model, @PathVariable("item_id") Long item_id) {
 		Item item = itemRepository.findById(item_id).get();
 		model.addAttribute("item", item);

@@ -440,7 +440,7 @@ img {
                                 </div>
                                 <span style="margin-left: 180px; font-weight: bold;" th:text="${p.cost}"></span>
                                 <span style="margin: 180px; text-align: center;" th:text="${p.description}"></span>
-                                <a th:href="@{'commands/{command_id} + '/items/' +  ${p.id}}"><button style="background-color: #2e1589; color: rgb(255, 255, 255); height: 30px; width: 90px;border-style: none;margin-top: 10px">Ingredients</button></a>
+                                <a th:href="@{'/commands/' +  ${command.id} +   '/items/' +  ${p.id}}"><button style="background-color: #2e1589; color: rgb(255, 255, 255); height: 30px; width: 90px;border-style: none;margin-top: 10px">Ingredients</button></a>
                             </div>
                         </div>
                         

@@ -50,6 +50,7 @@ public class CommandsController {
 			Command command = commandRepository.findById(command_id).get();
 			List<Item> commandItems = command.getItems();
 			model.addAttribute("commandItems", commandItems);
+			model.addAttribute("command", command);
 			
 		} catch (Exception e) {
 		      model.addAttribute("message", e.getMessage());
@@ -94,7 +95,8 @@ public class CommandsController {
 		return "breakfastItems";
 	}
 	
-	@GetMapping("/commands/{command_id}/addItem/{item_id}")
+	@GetMapping
+	("/commands/{command_id}/addItem/{item_id}")
 	public String addCommandItem(Model model, @PathVariable("command_id") Long command_id, @PathVariable("item_id") Long item_id, RedirectAttributes redirectAttributes) {
 		try {
 			

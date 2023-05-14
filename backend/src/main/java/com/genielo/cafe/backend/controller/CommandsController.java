@@ -188,7 +188,14 @@ public class CommandsController {
 	public String getItem(Model model, @PathVariable("item_id") Long item_id, @PathVariable("command_id") Long command_id) {
 		Item item = itemRepository.findById(item_id).get();
 		model.addAttribute("item", item);
+		
 		Command command  = commandRepository.findById(command_id).get();
+		
+		List<Item> commandItems = command.getItems();
+		commandItems.add(item);
+		command.setItems(commandItems);
+		commandRepository.save(command);
+		
 		model.addAttribute("command", command);
 		
 		return "chooseItem";

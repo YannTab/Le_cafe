@@ -431,7 +431,7 @@ img {
         <div class="main">
             <h1 style="text-align:center; margin-bottom:200px;">.....................</h1>
             <form th:object="${item}" method ="post" enctype="multipart/form-data" action="item">
-                <fieldset>
+                <div th:object="${command}">
                     <legend style="text-align: center;" th:text="${item.name}"></legend>
                         
                         <br>
@@ -444,10 +444,11 @@ img {
                     <label for="css">Soucis</label><br>
                     <input type="checkbox" id="" name="" value="">
                     <label for="javascript">Chocolate</label>
-                </fieldset>
+                
                   <button class="button"  style="background-color: #5461f0; color: aliceblue;
                     height: 30px; width: 210px; border-style: none; border-radius: 20px; 
-                    margin-left: 160px; margin-top: 30px;"type="submit" value="Submit"><a th:href="@{'/commands/'  + ${command.id} + '/items' }">Submit</a></button>
+                    margin-left: 160px; margin-top: 30px;"type="submit" value="Submit"><a th:href="@{'/commands/' + ${command.id} + '/items' }">Submit</a></button>
+                    </div>
             </form>
         </div>
 

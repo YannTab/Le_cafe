@@ -405,7 +405,7 @@ img {
         <div style="height: 30em; width: 50em; border-radius: 20px; border-width: 1px; background-color: rgb(220, 226, 226);">
              <div class="content-2">
            
-                <div class="recent-payments">
+                <div class="recent-payments" th:object='${commandItems}'>
                     <div class="title">
                         <h2>Command</h2>
                     </div>
@@ -415,9 +415,9 @@ img {
                             <th>Amount</th>
                             <th>Option</th>
                         </tr>
-                        <tr th:each="p:${command}">
-                            <td th:text="${p.type}"></td>
-                            <td></td>
+                        <tr th:each="p:${commandItems}">
+                            <td th:text="${p.name}"></td>
+                            <td th:text="${p.cost}"></td>
                             <td><a href="#" class="btn"></a></td>
                         </tr>
                     </table>

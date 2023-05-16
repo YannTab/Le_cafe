@@ -163,12 +163,13 @@ public class CommandsController {
 		try {
 			Command command = commandRepository.findById(command_id).get();
 			command.setServed(true);
+			commandRepository.save(command);
 		} catch (Exception e) {
 		      redirectAttributes.addFlashAttribute("message", e.getMessage());
 
 		}
 		
-		return "redirect:/commnds/toServe";
+		return "redirect:/commands/toServe";
 	}
 	
 	@GetMapping("/commands/cook/{command_id}")
@@ -177,12 +178,13 @@ public class CommandsController {
 		try {
 			Command command = commandRepository.findById(command_id).get();
 			command.setCooked(true);
+			commandRepository.save(command);
 		} catch (Exception e) {
 		      redirectAttributes.addFlashAttribute("message", e.getMessage());
 
 		}
 		
-		return "redirect:/commnds/toCook";
+		return "redirect:/commands/toCook";
 	}
 	@GetMapping("/commands/{command_id}/items/{item_id}")
 	public String getItem(Model model, @PathVariable("item_id") Long item_id, @PathVariable("command_id") Long command_id) {

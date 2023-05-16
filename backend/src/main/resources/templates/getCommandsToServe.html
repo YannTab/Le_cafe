@@ -428,21 +428,27 @@ img {
         </div>
         <div class="content">
             <div class="content-2">
-                <div class="recent-payments">
+                <div  class="recent-payments">
                     <div class="title">
                         <h2>Food To be Served</h2>
                     </div>
                     <table>
                         <tr>
+                           <th>Numero Command</th>
                             <th>Name</th>
                             <th>Price</th>
                             <th>Option</th>
                         </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
+                        <div th:each="p:${commandsToServe}"   >
+                             
+                             <tr th:each="k:${p.items}">
+                             <td th:text="${p.id}"></td>
+	                            <td th:text="${k.name}"></td>
+	                            <td th:text="${k.cost}"></td>
+                             <td><a th:href="@{'/commands/serve/'+ ${p.id}}" class="btn">Served</a></td>
+                            </tr>
+                        </div>
+                       
                     </table>
                 </div>
                 

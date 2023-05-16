@@ -433,16 +433,19 @@ img {
                         <h2>Food To be Cooked</h2>
                     </div>
                     <table>
-                        <tr>
+                        <tr><th>Numero commande</th>
                             <th>Name</th>
                             <th>Price</th>
                             <th>Option</th>
                         </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
+                       <div th:each="p:${commandsToCook}"   >
+                             <tr th:each="k:${p.items}">
+                             <td th:text="${p.id}"></td>
+                            <td th:text="${k.name}"></td>
+                            <td th:text="${k.cost}"></td>
+                            <td><a th:href="@{'/commands/cook/'+ ${p.id}}" class="btn">Cook</a></td>
+                            </tr>
+                        </div>
                     </table>
                 </div>
                 

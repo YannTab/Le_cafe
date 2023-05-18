@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        * {
+      * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -99,7 +99,7 @@ td {
     position: absolute;
     right: 0;
     width: 80vw;
-    height: 100vh;
+    height: 50vh;
     background: #f1f1f1;
 }
 
@@ -179,7 +179,13 @@ td {
 .container .content {
     position: relative;
     margin-top: 10vh;
-    min-height: 90vh;
+    max-height: 100vh;
+    background: #f1f1f1;
+}
+.container .content1 {
+    position: relative;
+    margin-top: 10vh;
+    max-height: 50vh;
     background: #f1f1f1;
 }
 
@@ -189,17 +195,20 @@ td {
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
+    border-radius: 20;
 }
 
 .container .content .cards .card {
     width: 450px;
-    height: 150px;
+    height: 280px;
+    padding: 10px; 
     background: white;
     margin: 20px 10px;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+    /* display: flex; */
+    border-radius: 5px;
+    /* justify-content: center;*/
+    align-items: center; 
+    /* justify-content: space-around; */
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -209,7 +218,6 @@ td {
     justify-content: space-around;
     align-items: flex-start;
     flex-wrap: wrap;
-    margin-top: 5em;
 }
 
 .container .content .content-2 .recent-payments {
@@ -237,6 +245,7 @@ td {
     width: 40px;
 }
 
+/* my code*/
 
 .number {
 	padding: 0.3em;
@@ -299,16 +308,16 @@ legend {
 	font-family: "Baloo Chettan 2", cursive;
 } */
 
-.button {
+/* .button {
 	box-shadow: 1px 1px 3px black;
 	border: none;
 	background-color: #fbfbfb;
-	/* background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%239C92AC' fill-opacity='0.4' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E"); */
+	/* background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%239C92AC' fill-opacity='0.4' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E"); 
 	font-size: 1em;
 	align-self: center;
 	padding: 0.7em;
 	color: black;
-}
+} */
 
 /* .button:hover {
 	cursor: pointer;
@@ -341,8 +350,6 @@ img {
 }
 
 /* my code*/
-
-
 
 
 
@@ -390,22 +397,21 @@ img {
     }
 }
     </style>
-       <title>Admin Panel</title>
+    <title>Client View</title>
 </head>
 
 <body>
+   <body>
     <div class="side-menu">
         <div class="brand-name">
             <h1>Le Cafe</h1>
         </div>
         <ul>
-            <li><img src="dashboard (2).png" alt="">&nbsp; <span>Dashboard</span> </li>
-            <a th:href="@{/ingedients/all}"><li><img src="teacher2.png" alt="">&nbsp;<span>Ingredients</span> </li></a>
-            <a th:href="@{/items/all}"><li><img src="school.png" alt="">&nbsp;<span>Menu</span> </li></a>
+            <a href="index.html"><li><img src="dashboard (2).png" alt="">&nbsp; <span>Dashboard</span> </li></a>
+            <li><img src="reading-book (1).png" alt="">&nbsp;<span>Catergories</span> </li>
+            <li><img src="teacher2.png" alt="">&nbsp;<span>Ingredients</span> </li>
+            <li><img src="school.png" alt="">&nbsp;<span>Menu</span> </li>
             <li><img src="school.png" alt="">&nbsp;<span>Reciepts</span> </li>
-            <!-- <li><img src="payment.png" alt="">&nbsp;<span>Income</span> </li>
-            <li><img src="help-web-button.png" alt="">&nbsp; <span>Help</span></li>
-            <li><img src="settings.png" alt="">&nbsp;<span>Settings</span> </li> -->
         </ul>
     </div>
     <div class="container">
@@ -416,7 +422,6 @@ img {
                     <button type="submit"><img src="search.png" alt=""></button>
                 </div>
                 <div class="user">
-                    <a href="#" class="btn">Add New</a>
                     <img src="notifications.png" alt="">
                     <div class="img-case">
                         <img src="user.png" alt="">
@@ -425,79 +430,27 @@ img {
             </div>
         </div>
         <div class="content">
-            <div class="cards">
-                <div class="card">
-                    <div class="box">
-                        <a th:href="@{/items/new}"><h1>Add Menu</h1></a>
-                        
-                    </div>
-                    <div class="icon-case">
-                        <img src="teachers.png" alt="">
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="box">
-                        <a th:href="@{/ingredients/new}"><h1>Add Ingredients</h1></a>
-                        
-                    </div>
-                    <div class="icon-case">
-                        <img src="schools.png" alt="">
-                    </div>
-                </div>
-            </div>
+           
             <div class="content-2">
                 <div class="recent-payments">
                     <div class="title">
-                        <h2>Recent Commands</h2>
+                        <h2>Ingredients</h2>
                     </div>
                     <table>
-                        <tr><th>Numero commande</th>
+                        <tr>
                             <th>Name</th>
                             <th>Price</th>
+                            <th>description</th>
                         </tr>
-                       <div th:each="p:${commandsConfirmed}">
-                             <tr th:each="k:${p.items}">
-                             <td th:text="${p.id}"></td>
-                            <td th:text="${k.name}"></td>
-                            <td th:text="${k.cost}"></td>
+                             <tr th:each="q:${ingredients}">
+                            <td th:text="${q.name}"></td>
+                            <td th:text="${q.cost}"></td>
+                            <td th:text="${q.description}"></td>
                             </tr>
-                        </div>
+                        
                     </table>
                 </div>
-                <div class="new-students">
-                    <div class="title">
-                        <h2>Different  Reciepts</h2>
-                        <!-- <a href="#" class="btn">View All</a> -->
-                    </div>
-                    <table>
-                        <tr>
-                            <th>Profile</th>
-                            <th>Name</th>
-                            <th>option</th>
-                        </tr>
-                        <tr>
-                            <td><img src="user.png" alt=""></td>
-                            <td><a href="facture.html">John Steve Doe</a></td>
-                            <td><img src="info.png" alt=""></td>
-                        </tr>
-                        <tr>
-                            <td><img src="user.png" alt=""></td>
-                            <td>John Steve Doe</td>
-                            <td><img src="info.png" alt=""></td>
-                        </tr>
-                        <tr>
-                            <td><img src="user.png" alt=""></td>
-                            <td>John Steve Doe</td>
-                            <td><img src="info.png" alt=""></td>
-                        </tr>
-                        <tr>
-                            <td><img src="user.png" alt=""></td>
-                            <td>John Steve Doe</td>
-                            <td><img src="info.png" alt=""></td>
-                        </tr>
-
-                    </table>
-                </div>
+               
             </div>
         </div>
     </div>

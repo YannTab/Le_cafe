@@ -23,7 +23,7 @@ public class IngredientsController {
 	
 	@Autowired
 	IngredientRepository ingredientRepository;
-	
+	@GetMapping("/ingredients/all")
 	public String getIngredients(Model model) {
 			
 			List<Ingredient> ingredients = ingredientRepository.findAll();

@@ -31,6 +31,25 @@ public class ItemController {
 		}
 	}*/
 	
+	@GetMapping("/items/all")
+	public String getItems(Model model) {
+		
+		List<Item> items = itemRepository.findAll();
+		model.addAttribute("items", items);
+		return "adminItems" ;
+				
+	
+	}
+	
+	@GetMapping("/items/new")
+	public String addItems(Model model) {
+		
+		Item item = new Item();
+		
+		model.addAttribute("item", item);
+		return "itemForm";
+	}
+	
 	
 		
 }

@@ -432,6 +432,7 @@ img {
             <h1 style="text-align:center; margin-bottom:200px;">.....................</h1>
             <div>
                 <div>
+                <form>
                     <legend style="text-align: center;" th:text="${item.name}"></legend>
                         
                         <br>
@@ -448,6 +449,7 @@ img {
                   <button class="button"  style="background-color: #5461f0; color: aliceblue;
                     height: 30px; width: 210px; border-style: none; border-radius: 20px; 
                     margin-left: 160px; margin-top: 30px;"type="submit" value="Submit"><a th:href="@{'/commands/' +${command.id} + '/items'}">Submit</a></button>
+                    </form>
                     </div>
             </div>
         </div>

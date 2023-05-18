@@ -119,6 +119,7 @@ public class CommandsController {
 		try {
 			Command command = commandRepository.findById(command_id).get();
 			command.setConfirmed(true);
+			commandRepository.save(command);
 		} catch (Exception e) {
 		      redirectAttributes.addFlashAttribute("message", e.getMessage());
 

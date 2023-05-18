@@ -132,7 +132,7 @@ public class CommandsController {
 		
 		try {
 			List<Command> commandsToServe = new ArrayList<Command>();
-			commandRepository.findByServed(false).forEach(commandsToServe::add);
+			commandRepository.findByCookedAndServed(true, false).forEach(commandsToServe::add);
 			model.addAttribute("commandsToServe", commandsToServe);
 		} catch (Exception e) {
 			model.addAttribute("message", e.getMessage());
@@ -154,6 +154,21 @@ public class CommandsController {
 
 		}
 		return "getCommandsToCook";
+		
+	}
+	
+	@GetMapping("/commands/confirmed")
+	public String getCommandConfirmed(Model model) {
+		
+		try {
+			List<Command> commandsConfirmed = new ArrayList<Command>();
+			commandRepository.findByConfirmed(true).forEach(commandsConfirmed::add);
+			model.addAttribute("commandsConfirmed", commandsConfirmed);
+		} catch (Exception e) {
+			model.addAttribute("message", e.getMessage());
+
+		}
+		return "adminPage";
 		
 	}
 	

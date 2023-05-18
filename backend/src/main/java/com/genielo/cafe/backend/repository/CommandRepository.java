@@ -12,5 +12,8 @@ public interface CommandRepository extends JpaRepository<Command, Long> {
 
 	List<Command> findByServed(boolean served);
 	List<Command> findByCooked(boolean cooked);
+	List<Command> findByConfirmed(boolean confirmed);
+	List<Command> findByCookedAndServed(boolean cooked, boolean served);
 
+	
 }

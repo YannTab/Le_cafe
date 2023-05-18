@@ -157,7 +157,7 @@ public class CommandsController {
 		
 	}
 	
-	@GetMapping("/commands/confirmed")
+	@GetMapping("/admin")
 	public String getCommandConfirmed(Model model) {
 		
 		try {

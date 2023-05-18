@@ -63,12 +63,6 @@ public class ItemController {
 		return "redirect:/items/all";
 	}
 	
-	@GetMapping("/admin")
-	public String getAdminString() {
-		
-		return "adminPage";
-		
-	}
 	
 	
 	

@@ -439,11 +439,14 @@ img {
                     <table>
                         <tr>
                             <th>Name</th>
+                            <th>Type</th>
                             <th>Price</th>
+                            
                             <th>description</th>
                         </tr>
                              <tr th:each="k:${items}">
                             <td th:text="${k.name}"></td>
+                            <td th:text="${k.type}"></td>
                             <td th:text="${k.cost}"></td>
                             <td th:text="${k.description}"></td>
                             </tr>

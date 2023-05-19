@@ -95,6 +95,43 @@ public class CommandsController {
 		return "breakfastItems";
 	}
 	
+	@GetMapping("/commands/{command_id}/items/lunch")
+	public String getAllLunchItems(Model model, RedirectAttributes redirectAttributes, @PathVariable("command_id") Long command_id){
+		
+		try {
+			List<Item> lunchItems = new ArrayList<Item>();
+			itemRepository.findByType("lunch").forEach(lunchItems::add);		
+			model.addAttribute("lunchItems", lunchItems);
+			Command command  = commandRepository.findById(command_id).get();
+			model.addAttribute("command", command);		
+			redirectAttributes.addAttribute(command_id);
+
+			
+		} catch (Exception e) {
+			model.addAttribute("message", e.getMessage());
+		}
+		return "lunchItems";
+	}
+	
+	@GetMapping("/commands/{command_id}/items/dinner")
+	public String getAlldinnerItems(Model model, RedirectAttributes redirectAttributes, @PathVariable("command_id") Long command_id){
+		
+		try {
+			List<Item> dinnerItems = new ArrayList<Item>();
+			itemRepository.findByType("dinner").forEach(dinnerItems::add);		
+			model.addAttribute("dinnerItems", dinnerItems);
+			Command command  = commandRepository.findById(command_id).get();
+			model.addAttribute("command", command);		
+			redirectAttributes.addAttribute(command_id);
+
+			
+		} catch (Exception e) {
+			model.addAttribute("message", e.getMessage());
+		}
+		return "dinnerItems";
+	}
+	
+	
 	@GetMapping
 	("/commands/{command_id}/addItem/{item_id}")
 	public String addCommandItem(Model model, @PathVariable("command_id") Long command_id, @PathVariable("item_id") Long item_id, RedirectAttributes redirectAttributes) {

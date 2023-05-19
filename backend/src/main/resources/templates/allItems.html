@@ -407,9 +407,9 @@ img {
         </div>
         <ul>
             <a href="index.html"><li><img src="reading-book (1).png" alt="">&nbsp; <span>Menu</span> </li></a>
-            <a href="breakfast.html"><li><img src="reading-book (1).png" alt="">&nbsp;<span>breakfast</span> </li></a>
-            <a href="launch.html"><li><img src="teacher2.png" alt="">&nbsp;<span>launch</span> </li></a>
-            <a href="dinner.html"><li><img src="teacher2.png" alt="">&nbsp;<span>Dinner</span> </li></a>
+            <a th:href="@{'/commands/' + ${command.id} + '/items/breakfast'}"><li><img src="reading-book (1).png" alt="">&nbsp;<span>breakfast</span> </li></a>
+            <a th:href="@{'/commands/' + ${command.id} + '/items/lunch'}"><li><img src="teacher2.png" alt="">&nbsp;<span>lunch</span> </li></a>
+            <a th:href="@{'/commands/' + ${command.id} + '/items/dinner'}"><li><img src="teacher2.png" alt="">&nbsp;<span>Dinner</span> </li></a>
         </ul>
     </div>
     <div class="container">
@@ -440,7 +440,7 @@ img {
                 </div>
                 <div class="card">
                     <div class="box">
-                        <a href="launch.html"><h1 style="text-align: center; padding-top: 50px;">Launch</h1></a>
+                        <a th:href="@{'/commands/' + ${command.id} + '/items/lunch'}"><h1 style="text-align: center; padding-top: 50px;">Lunch</h1></a>
                     </div>
                     <div class="icon-case" style="margin-left: 160px; margin-top: 40px;">
                         <img src="teachers.png" alt="">
@@ -448,7 +448,7 @@ img {
                 </div>
                 <div class="card">
                     <div class="box">
-                        <a href="dinner.html"><h1 style="text-align: center; padding-top: 50px;">Dinner</h1></a>
+                        <a th:href="@{'/commands/' + ${command.id} + '/items/dinner'}"><h1 style="text-align: center; padding-top: 50px;">Dinner</h1></a>
                     </div>
                     <div class="icon-case" style="margin-left: 160px; margin-top: 40px;">
                         <img src="schools.png" alt="">

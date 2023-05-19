@@ -405,7 +405,7 @@ img {
     <div class="main">
         <h1 style="text-align:center; margin:50px;">Add Menu</h1>
         <form   th:object="${item}" method="POST"  th:action="@{/items/save}">
-            <fieldset>
+            <fieldset   style="margin-left:90px;">
                 <legend>
                     Add Menu:
                 </legend>
@@ -417,11 +417,11 @@ img {
                 <input type="text" th:field="*{cost}" required/><br>
                 <label for="name">Description:</label><br>
                 <input type="text" th:field="*{description}" required/><br>
-                <label for="name">List Ingredients:</label><br>
-                <input type="text"/><br>
             </fieldset>
            
-            <button class="button" type="submit">Save</button>
+            <button class="button" type="submit" style="background-color: #5461f0; color: aliceblue;
+                    height: 30px; width: 210px; border-style: none; border-radius: 20px; 
+                    margin-left: 240px; margin-top: 30px;"  >Save</button>
         </form>
     </div>
    

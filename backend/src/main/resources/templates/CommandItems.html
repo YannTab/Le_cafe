@@ -413,12 +413,12 @@ img {
                         <tr>
                             <th>Name</th>
                             <th>Amount</th>
-                            <th>Option</th>
+                            <th>Description</th>
                         </tr>
                         <tr th:each="p:${commandItems}">
                             <td th:text="${p.name}"></td>
                             <td th:text="${p.cost}"></td>
-                            <td><a href="#" class="btn"></a></td>
+                            <td th:text="${p.description}"></td>
                         </tr>
                     </table>
                 </div>
